@@ -12,27 +12,25 @@ Não é apenas um "check/uncheck". Contém uma regra de negócio:
 
 ## O Esqueleto do Clean Architecture
 
+Obs. Esse mesmo projeto foi refatorado em outro repositório (https://github.com/casamassa/study-vsa) na arquitetura VSA ao invés de Clean Arch, lae a pena comparar e decidir qual adequa mais a necessidade.
+
 São 4 projetos que você dentro de uma Solution:
 
 1.  Todo.Domain (Class Library)
-
-- O que tem: A classe Tarefa (Entidade), o Enum Prioridade e as Interfaces dos Repositórios (contratos).
-- Dependências: Nenhuma. É o centro de tudo.
+    - O que tem: A classe Tarefa (Entidade), o Enum Prioridade e as Interfaces dos Repositórios (contratos).
+    - Dependências: Nenhuma. É o centro de tudo.
 
 2.  Todo.Application (Class Library)
-
-- O que tem: Os DTOs (objetos que viajam entre UI e API) e o TarefaService (onde está a orquestração).
-- Dependências: Depende apenas do Todo.Domain.
+    - O que tem: Os DTOs (objetos que viajam entre UI e API) e o TarefaService (onde está a orquestração).
+    - Dependências: Depende apenas do Todo.Domain.
 
 3.  Todo.Infrastructure (Class Library)
-
-- O que tem: O contexto do Banco de Dados (EF Core) e a implementação real do Repositório que salva no banco.
-- Dependências: Depende de Todo.Domain (para implementar as interfaces).
+    - O que tem: O contexto do Banco de Dados (EF Core) e a implementação real do Repositório que salva no banco.
+    - Dependências: Depende de Todo.Domain (para implementar as interfaces).
 
 4.  Todo.API (ASP.NET Core Web API)
-
-- O que tem: Os Controllers e o Program.cs onde a "mágica" da Injeção de Dependência acontece.
-- Dependências: Depende de Todo.Application (para chamar os serviços) e Todo.Infrastructure (apenas para registrar a DI).
+    - O que tem: Os Controllers e o Program.cs onde a "mágica" da Injeção de Dependência acontece.
+    - Dependências: Depende de Todo.Application (para chamar os serviços) e Todo.Infrastructure (apenas para registrar a DI).
 
 ## Por que esse projeto é bom para aprender?
 
