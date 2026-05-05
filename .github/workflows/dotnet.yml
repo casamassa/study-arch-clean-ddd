@@ -26,3 +26,13 @@ jobs:
 
     - name: Test
       run: dotnet test --no-build tests/Todo.UnitTests/Todo.UnitTests.csproj
+
+    - name: Publish API
+      run: dotnet publish src/Todo.API/Todo.API.csproj -c Release -o ./publish
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Todo-Binary
+        path: ./publish
+
