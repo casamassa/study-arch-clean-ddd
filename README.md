@@ -1,4 +1,4 @@
-# Estudo simples de Clean Architecture + DDD + DI/IoC
+# Estudo simples de Clean Architecture + DDD + SOLID (DI/IoC) + DevOps (CI/CD)
 
 Um Sistema de Gestão de Tarefas (Todo List) com Prioridades.
 
